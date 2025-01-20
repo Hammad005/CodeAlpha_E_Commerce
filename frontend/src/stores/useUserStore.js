@@ -61,15 +61,18 @@ export const useUserStore = create((set, get) => ({
 
 
     checkAuth: async () => {
-		set({ checkingAuth: true });
-		try {
-			const response = await axios.get("/auth/profile");
-			set({ user: response.data, checkingAuth: false });
-		} catch (error) {
-			console.log(error.message);
-			set({ checkingAuth: false, user: null });
-		}
-	},
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        set({ checkingAuth: true });
+        try {
+            const res = await axios.get("/auth/profile");
+            set({ user: res.data, checkingAuth: false });
+            
+        } catch (error) {
+            set({ checkingAuth: false, user: null, error: error });
+        } finally {
+            set({ checkingAuth: false });
+        }
+    },
 
     refreshToken: async () => {
         if (get().checkingAuth) return;
