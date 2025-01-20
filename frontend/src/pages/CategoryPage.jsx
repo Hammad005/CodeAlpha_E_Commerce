@@ -3,14 +3,23 @@ import { useProductStore } from "../stores/useProductStore";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard";
+import { Loader } from "lucide-react";
 
 const CategoryPage = () => {
-  const { fetchProductsByCategory, products } = useProductStore();
+  const { fetchProductsByCategory, products, loading } = useProductStore();
   const { category } = useParams();
   useEffect(() => {
     fetchProductsByCategory(category);
   }, [fetchProductsByCategory, category]);
 
+  if (loading) {
+    return(
+      <div className="flex justify-center items-center mt-52">
+        <Loader className="mr-2 h-5 w-5 animate-spin" aria-hidden="true" />
+        Loading...
+      </div>
+    )
+  };
   return (
     <div className="min-h-screen">
       <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import {
+  Home,
   Loader,
   Lock,
   LogIn,
@@ -29,12 +30,16 @@ const Navbar = () => {
             E-Commerce
           </Link>
 
-          <nav className="flex flex-wrap items-center gap-4">
+          <nav className="flex flex-wrap items-center gap-4 font-semibold">
             <Link
               to={"/"}
-              className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
+              className="flex text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out lg:mt-1 "
             >
-              Home
+              <Home
+                className="inline-block lg:mr-1 group-hover:text-emerald-400"
+                size={20}
+              />
+              <p className="hidden sm:inline ">Home</p>
             </Link>
             {user && user?.role !== "admin" && (
               <Link
@@ -68,12 +73,12 @@ const Navbar = () => {
             )}
             {user ? (
               <button
-                className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4
-            rounded-md flex items-center transition duration-300 ease-in-out"
+                className="bg-gray-700 hover:bg-gray-600 text-white py-1 px-3
+            rounded-md flex items-center transition duration-300 ease-in-out font-medium"
                 onClick={logout}
               >
                 {!loading ? (
-                  <LogOut size={18} />
+                  <LogOut size={20} />
                 ) : (
                   <Loader className="h-5 w-5 animate-spin" aria-hidden="true" />
                 )}
@@ -83,19 +88,19 @@ const Navbar = () => {
               <>
                 <Link
                   to={"/signup"}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white  py-1 lg:py-2 px-3 lg:px-4
               rounded-md flex items-center transition duration-300 ease-in-out"
                 >
-                  <UserPlus className="mr-2" size={18} />
-                  Sign Up
+                  <UserPlus className="lg:mr-2" size={20} />
+                  <span className="hidden sm:inline ">Sign Up</span>
                 </Link>
                 <Link
                   to={"/login"}
-                  className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4
+                  className="bg-gray-700 hover:bg-gray-600 text-white py-1 lg:py-2 px-3 lg:px-4
               rounded-md flex items-center transition duration-300 ease-in-out"
                 >
-                  <LogIn className="mr-2" size={18} />
-                  Login
+                  <LogIn className="lg:mr-2" size={20} />
+                  <span className="hidden sm:inline ">Login</span>
                 </Link>
               </>
             )}
