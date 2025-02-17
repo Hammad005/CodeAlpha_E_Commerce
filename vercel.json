@@ -22,13 +22,5 @@
         "src": "/(.*)",
         "dest": "/frontend/dist/index.html"
       }
-    ],
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      },
-      "scripts": {
-        "build": "npm run build"
-      }
-    }
+    ]
   }
