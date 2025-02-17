@@ -8,17 +8,9 @@
     ],
     "routes": [
       {
-        "src": "/api/(.*)",
-        "dest": "backend/server.js"
-      },
-      {
         "src": "/(.*)",
-        "dest": "/frontend/dist/index.html"
+        "dest": "backend/server.js"
       }
-    ],
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
+    ]
   }
+  
