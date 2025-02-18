@@ -27,6 +27,7 @@ app.use(cors({
     credentials: true,
 }));
 
+console.log(process.env.CLIENT_URL);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
