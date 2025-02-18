@@ -39,7 +39,12 @@ app.use("/api/analytics", analyticsRoutes);
 
 
 
-app.listen(PORT, () => {
-    console.log('Server is running on http://localhost:' + PORT);
-    connectDB();
-})
+if (process.env.NODE_ENV === "development") {
+    app.listen(PORT, () => {
+        console.log('Server is running on http://localhost:' + PORT);
+        connectDB();
+    })
+}
+connectDB();
+
+export default app;
